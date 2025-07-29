@@ -866,58 +866,31 @@ const ClimateSelector = () => {
     </div>
   );
 };
-//==================================================================
-// COMPONENTE 4: EL PANEL LATERAL DE NAVEGACIÓN
-//==================================================================
-const Sidebar = () => (
-  <aside className="sidebar">
-    <div className="sidebar-header">LBC Paneles</div>
-    <nav className="sidebar-nav">
-      <NavLink to="/" end className="sidebar-link">Inicio</NavLink>
-      <NavLink to="/vegetacion" className="sidebar-link">Form. Vegetacionales</NavLink>
-      <NavLink to="/clima" className="sidebar-link">Regiones Climáticas</NavLink>
-    </nav>
-  </aside>
-);
+// Renderizado seguro
+document.addEventListener('DOMContentLoaded', () => {
+  const rootElement = document.getElementById('root');
+  
+  if (!rootElement) {
+    console.error('No se encontró el elemento root');
+    return;
+  }
 
-
-//==================================================================
-// COMPONENTE PRINCIPAL: APP (El que organiza todo)
-//==================================================================
-const App = () => (
-  <BrowserRouter>
-    <div className="main-layout">
-      <Sidebar />
-      <main className="content">
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/vegetacion" element={<ChileVegetationSelector />} />
-          <Route path="/clima" element={<ClimateSelector />} />
-        </Routes>
-      </main>
-    </div>
-  </BrowserRouter>
-);
-
-//==================================================================
-// RENDERIZAR LA APLICACIÓN
-//==================================================================
-const rootElement = document.getElementById('root');
-if (rootElement) {
   try {
     const root = ReactDOM.createRoot(rootElement);
-    root.render(<App />);
-    console.log('✓ Aplicación renderizada exitosamente');
+    root.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+    console.log('Aplicación renderizada con éxito');
   } catch (error) {
-    console.error('✗ Error al renderizar:', error);
+    console.error('Error al renderizar:', error);
     rootElement.innerHTML = `
       <div style="padding: 2rem; color: red; text-align: center;">
-        <h2>Error al renderizar la aplicación</h2>
-        <p>Por favor recarga la página o contacta al soporte técnico.</p>
-        <pre>${error.message}</pre>
+        <h2>Error en la aplicación</h2>
+        <p>${error.message}</p>
+        <p>Por favor recarga la página</p>
       </div>
     `;
   }
-} else {
-  console.error('No se encontró el elemento con id "root"');
-}
+});
