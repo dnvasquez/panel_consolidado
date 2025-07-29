@@ -902,18 +902,22 @@ const App = () => (
 //==================================================================
 // RENDERIZAR LA APLICACIÓN
 //==================================================================
-console.log('Intentando renderizar la aplicación...');
-
-try {
-  const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(<App />);
-  console.log('✓ Aplicación renderizada exitosamente');
-} catch (error) {
-  console.error('✗ Error al renderizar:', error);
-  document.getElementById('root').innerHTML = `
-    <div style="padding: 2rem; color: red; text-align: center;">
-      <h2>Error al renderizar la aplicación</h2>
-      <pre>${error.message}</pre>
-    </div>
-  `;
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  try {
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(<App />);
+    console.log('✓ Aplicación renderizada exitosamente');
+  } catch (error) {
+    console.error('✗ Error al renderizar:', error);
+    rootElement.innerHTML = `
+      <div style="padding: 2rem; color: red; text-align: center;">
+        <h2>Error al renderizar la aplicación</h2>
+        <p>Por favor recarga la página o contacta al soporte técnico.</p>
+        <pre>${error.message}</pre>
+      </div>
+    `;
+  }
+} else {
+  console.error('No se encontró el elemento con id "root"');
 }
