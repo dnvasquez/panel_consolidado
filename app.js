@@ -609,149 +609,148 @@ const ChileVegetationSelector = () => {
 
 
       const handleRegionChange = (e) => {
-        const regionId = e.target.value;
-        setSelectedRegion(regionId);
-        setSelectedSubRegion('');
-        setSelectedFormation('');
-      };
+    const regionId = e.target.value;
+    setSelectedRegion(regionId);
+    setSelectedSubRegion('');
+    setSelectedFormation('');
+  };
 
-      const handleSubRegionChange = (e) => {
-        const subRegionId = e.target.value;
-        setSelectedSubRegion(subRegionId);
-        setSelectedFormation('');
-      };
+  const handleSubRegionChange = (e) => {
+    const subRegionId = e.target.value;
+    setSelectedSubRegion(subRegionId);
+    setSelectedFormation('');
+  };
 
-      const handleFormationChange = (e) => {
-        setSelectedFormation(e.target.value);
-      };
+  const handleFormationChange = (e) => {
+    setSelectedFormation(e.target.value);
+  };
 
-      const getSubRegions = () => {
-        if (!selectedRegion || !vegetationData[selectedRegion]) return {};
-        return vegetationData[selectedRegion].subRegions;
-      };
+  const getSubRegions = () => {
+    if (!selectedRegion || !vegetationData[selectedRegion]) return {};
+    return vegetationData[selectedRegion].subRegions;
+  };
 
-      const getFormations = () => {
-        if (!selectedRegion || !selectedSubRegion || !vegetationData[selectedRegion]?.subRegions[selectedSubRegion]) return {};
-        return vegetationData[selectedRegion].subRegions[selectedSubRegion].formations;
-      };
+  const getFormations = () => {
+    if (!selectedRegion || !selectedSubRegion || !vegetationData[selectedRegion]?.subRegions[selectedSubRegion]) return {};
+    return vegetationData[selectedRegion].subRegions[selectedSubRegion].formations;
+  };
 
-      const getFormationDescription = () => {
-        if (!selectedRegion || !selectedSubRegion || !selectedFormation) return '';
-        const formation = vegetationData[selectedRegion]?.subRegions[selectedSubRegion]?.formations[selectedFormation];
-        return formation?.description || '';
-      };
-      
-      const getFormationSpecies = () => {
-        if (!selectedFormation) return '';
-        return speciesData[selectedFormation] || 'No hay datos de especies para esta formación.';
-      };
+  const getFormationDescription = () => {
+    if (!selectedRegion || !selectedSubRegion || !selectedFormation) return '';
+    const formation = vegetationData[selectedRegion]?.subRegions[selectedSubRegion]?.formations[selectedFormation];
+    return formation?.description || '';
+  };
+  
+  const getFormationSpecies = () => {
+    if (!selectedFormation) return '';
+    return speciesData[selectedFormation] || 'No hay datos de especies para esta formación.';
+  };
 
-      return (
-        <div className="app-container">
-          <div className="card">
-            <h1 className="title">
-              Formaciones Vegetacionales de Chile
-            </h1>
-            <p className="subtitle">
-              Según Gajardo 1994
-            </p>
-            
-            <div className="space-y-6">
-              {/* Selector de Región */}
-              <div className="select-container">
-                <label className="select-label">
-                  1. Selecciona una Región:
-                </label>
-                <select 
-                  value={selectedRegion} 
-                  onChange={handleRegionChange}
-                  className="select-box"
-                >
-                  <option value="">-- Selecciona una región --</option>
-                  {Object.entries(vegetationData).map(([key, region]) => (
-                    <option key={key} value={key}>
-                      Región {key}: {region.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Selector de Sub-región */}
-              {selectedRegion && (
-                <div className="select-container">
-                  <label className="select-label">
-                    2. Selecciona una Sub-región:
-                  </label>
-                  <select 
-                    value={selectedSubRegion} 
-                    onChange={handleSubRegionChange}
-                    className="select-box"
-                  >
-                    <option value="">-- Selecciona una sub-región --</option>
-                    {Object.entries(getSubRegions()).map(([key, subRegion]) => (
-                      <option key={key} value={key}>
-                        {key}: {subRegion.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
-
-              {/* Selector de Formación */}
-              {selectedSubRegion && (
-                <div className="select-container">
-                  <label className="select-label">
-                    3. Selecciona una Formación:
-                  </label>
-                  <select 
-                    value={selectedFormation} 
-                    onChange={handleFormationChange}
-                    className="select-box"
-                  >
-                    <option value="">-- Selecciona una formación --</option>
-                    {Object.entries(getFormations()).map(([key, formation]) => (
-                      <option key={key} value={key}>
-                        {key}: {formation.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
-
-              {/* Descripción */}
-              {selectedFormation && (
-                <div className="description-box">
-                  <h3 className="description-title">
-                    Descripción de la Formación
-                  </h3>
-                  <div className="description-text">
-                    {getFormationDescription()}
-                  </div>
-                </div>
-              )}
-
-              {/* Especies Asociadas */}
-              {selectedFormation && (
-                <div className="species-box">
-                  <h3 className="species-title">
-                    Especies Asociadas
-                  </h3>
-                  <div className="species-text">
-                    {getFormationSpecies()}
-                  </div>
-                </div>
-              )}
-            </div>
-            
-            <div className="footer">
-              <p>© 2025 LBC Consultores Ambientales</p>
-              <p>Autor: david.vasquez@lbconservation.org</p>
-            </div>
+  return (
+    <div className="app-container">
+      <div className="card">
+        <h1 className="title">
+          Formaciones Vegetacionales de Chile
+        </h1>
+        <p className="subtitle">
+          Según Gajardo 1994
+        </p>
+        
+        <div className="space-y-6">
+          {/* Selector de Región */}
+          <div className="select-container">
+            <label className="select-label">
+              1. Selecciona una Región:
+            </label>
+            <select 
+              value={selectedRegion} 
+              onChange={handleRegionChange}
+              className="select-box"
+            >
+              <option value="">-- Selecciona una región --</option>
+              {Object.entries(vegetationData).map(([key, region]) => (
+                <option key={key} value={key}>
+                  Región {key}: {region.name}
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
-      );
-    };
 
+          {/* Selector de Sub-región */}
+          {selectedRegion && (
+            <div className="select-container">
+              <label className="select-label">
+                2. Selecciona una Sub-región:
+              </label>
+              <select 
+                value={selectedSubRegion} 
+                onChange={handleSubRegionChange}
+                className="select-box"
+              >
+                <option value="">-- Selecciona una sub-región --</option>
+                {Object.entries(getSubRegions()).map(([key, subRegion]) => (
+                  <option key={key} value={key}>
+                    {key}: {subRegion.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Selector de Formación */}
+          {selectedSubRegion && (
+            <div className="select-container">
+              <label className="select-label">
+                3. Selecciona una Formación:
+              </label>
+              <select 
+                value={selectedFormation} 
+                onChange={handleFormationChange}
+                className="select-box"
+              >
+                <option value="">-- Selecciona una formación --</option>
+                {Object.entries(getFormations()).map(([key, formation]) => (
+                  <option key={key} value={key}>
+                    {key}: {formation.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Descripción */}
+          {selectedFormation && (
+            <div className="description-box">
+              <h3 className="description-title">
+                Descripción de la Formación
+              </h3>
+              <div className="description-text">
+                {getFormationDescription()}
+              </div>
+            </div>
+          )}
+
+          {/* Especies Asociadas */}
+          {selectedFormation && (
+            <div className="species-box">
+              <h3 className="species-title">
+                Especies Asociadas
+              </h3>
+              <div className="species-text">
+                {getFormationSpecies()}
+              </div>
+            </div>
+          )}
+        </div>
+        
+        <div className="footer">
+          <p>© 2025 LBC Consultores Ambientales</p>
+          <p>Autor: david.vasquez@lbconservation.org</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 //==================================================================
 // COMPONENTE 3: PANEL DE CLIMA (tu código original adaptado)
 //==================================================================
@@ -807,67 +806,66 @@ const ClimateSelector = () => {
       ];
 
       const handleClimateChange = (e) => {
-        setSelectedClimateCode(e.target.value);
-      };
+    setSelectedClimateCode(e.target.value);
+  };
 
-      const getSelectedClimate = () => {
-        if (!selectedClimateCode) return null;
-        return climateData.find(climate => climate.code === selectedClimateCode);
-      };
-      
-      const selectedClimate = getSelectedClimate();
+  const getSelectedClimate = () => {
+    if (!selectedClimateCode) return null;
+    return climateData.find(climate => climate.code === selectedClimateCode);
+  };
+  
+  const selectedClimate = getSelectedClimate();
 
-      return (
-        <div className="app-container">
-          <div className="card">
-            <h1 className="title">
-              Clasificación Climática de Chile Continental
-            </h1>
-            <p className="subtitle">
-              Según Sarricolea et al. 2017
-            </p>
-            
-            <div>
-              <div className="select-container">
-                <label htmlFor="climate-select" className="select-label">
-                  Selecciona una Región Climática:
-                </label>
-                <select 
-                  id="climate-select"
-                  value={selectedClimateCode} 
-                  onChange={handleClimateChange}
-                  className="select-box"
-                >
-                  <option value="">-- Elige un tipo de clima --</option>
-                  {climateData.map((climate) => (
-                    <option key={climate.code} value={climate.code}>
-                      {climate.code} - {climate.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {selectedClimate && (
-                <div className="description-box">
-                  <h3 className="description-title">
-                    {selectedClimate.name} ({selectedClimate.code})
-                  </h3>
-                  <p className="description-text">
-                    {selectedClimate.description}
-                  </p>
-                </div>
-              )}
-            </div>
-            
-            <div className="footer">
-              <p>© 2025 LBC Consultores Ambientales</p>
-		<p>Autor: david.vasquez@lbconservation.org</p>
-            </div>
+  return (
+    <div className="app-container">
+      <div className="card">
+        <h1 className="title">
+          Clasificación Climática de Chile Continental
+        </h1>
+        <p className="subtitle">
+          Según Sarricolea et al. 2017
+        </p>
+        
+        <div>
+          <div className="select-container">
+            <label htmlFor="climate-select" className="select-label">
+              Selecciona una Región Climática:
+            </label>
+            <select 
+              id="climate-select"
+              value={selectedClimateCode} 
+              onChange={handleClimateChange}
+              className="select-box"
+            >
+              <option value="">-- Elige un tipo de clima --</option>
+              {climateData.map((climate) => (
+                <option key={climate.code} value={climate.code}>
+                  {climate.code} - {climate.name}
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
-      );
-    };
 
+          {selectedClimate && (
+            <div className="description-box">
+              <h3 className="description-title">
+                {selectedClimate.name} ({selectedClimate.code})
+              </h3>
+              <p className="description-text">
+                {selectedClimate.description}
+              </p>
+            </div>
+          )}
+        </div>
+        
+        <div className="footer">
+          <p>© 2025 LBC Consultores Ambientales</p>
+          <p>Autor: david.vasquez@lbconservation.org</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 //==================================================================
 // COMPONENTE 4: EL PANEL LATERAL DE NAVEGACIÓN
 //==================================================================
@@ -875,10 +873,9 @@ const Sidebar = () => (
   <aside className="sidebar">
     <div className="sidebar-header">LBC Paneles</div>
     <nav className="sidebar-nav">
-       <NavLink to="/" end className="sidebar-link">Inicio</NavLink>
+      <NavLink to="/" end className="sidebar-link">Inicio</NavLink>
       <NavLink to="/vegetacion" className="sidebar-link">Form. Vegetacionales</NavLink>
       <NavLink to="/clima" className="sidebar-link">Regiones Climáticas</NavLink>
-      {/* ¡Aquí agregarás nuevos enlaces en el futuro! */}
     </nav>
   </aside>
 );
@@ -893,12 +890,10 @@ const App = () => (
       <Sidebar />
       <main className="content">
         <Routes>
-  <Route path="/" element={<Inicio />} />
-  {/* CORREGIDO: Ahora usa el nombre correcto del componente */}
-  <Route path="/vegetacion" element={<ChileVegetationSelector />} />
-  {/* CORREGIDO: Ahora usa el nombre correcto del componente */}
-  <Route path="/clima"      element={<ClimateSelector />} />
-</Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/vegetacion" element={<ChileVegetationSelector />} />
+          <Route path="/clima" element={<ClimateSelector />} />
+        </Routes>
       </main>
     </div>
   </HashRouter>
@@ -907,5 +902,18 @@ const App = () => (
 //==================================================================
 // RENDERIZAR LA APLICACIÓN
 //==================================================================
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+console.log('Intentando renderizar la aplicación...');
+
+try {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<App />);
+  console.log('✓ Aplicación renderizada exitosamente');
+} catch (error) {
+  console.error('✗ Error al renderizar:', error);
+  document.getElementById('root').innerHTML = `
+    <div style="padding: 2rem; color: red; text-align: center;">
+      <h2>Error al renderizar la aplicación</h2>
+      <pre>${error.message}</pre>
+    </div>
+  `;
+}
