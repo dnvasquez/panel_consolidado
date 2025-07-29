@@ -8,21 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="root">
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Inter', sans-serif;">
-      <div style="text-align: center;">
-        <h2>Cargando panel de datos...</h2>
-        <p>LBC Consultores Ambientales</p>
-      </div>
-    </div>
-  </div>
+  <div id="root"></div>
 
-  <!-- Carga optimizada de dependencias -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-router-dom@6.8.0/dist/umd/react-router-dom.production.min.js"></script>
-  
-  <!-- Cambia a JavaScript normal (no Babel) -->
-  <script src="app.js" defer></script>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script src="app.js" type="text/babel"></script>
 </body>
 </html>
