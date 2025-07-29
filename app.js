@@ -1,6 +1,6 @@
 // Importaciones de las librerías que cargamos en el HTML
 const { useState } = React;
-const { HashRouter, Routes, Route, NavLink } = ReactRouterDOM;
+const { BrowserRouter, Routes, Route, NavLink } = ReactRouterDOM;
 
 //==================================================================
 // COMPONENTE 1: PÁGINA DE INICIO
@@ -885,7 +885,7 @@ const Sidebar = () => (
 // COMPONENTE PRINCIPAL: APP (El que organiza todo)
 //==================================================================
 const App = () => (
-  <HashRouter>
+  <BrowserRouter>
     <div className="main-layout">
       <Sidebar />
       <main className="content">
@@ -896,7 +896,7 @@ const App = () => (
         </Routes>
       </main>
     </div>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 //==================================================================
