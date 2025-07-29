@@ -893,11 +893,12 @@ const App = () => (
       <Sidebar />
       <main className="content">
         <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/vegetacion" element={<PanelVegetacion />} />
-          <Route path="/clima"      element={<PanelClima />} />
-          {/* ¡Aquí agregarás nuevas rutas en el futuro! */}
-        </Routes>
+  <Route path="/" element={<Inicio />} />
+  {/* CORREGIDO: Ahora usa el nombre correcto del componente */}
+  <Route path="/vegetacion" element={<ChileVegetationSelector />} />
+  {/* CORREGIDO: Ahora usa el nombre correcto del componente */}
+  <Route path="/clima"      element={<ClimateSelector />} />
+</Routes>
       </main>
     </div>
   </HashRouter>
