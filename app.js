@@ -1,124 +1,186 @@
-console.log('=== INICIO DEL SCRIPT ===');
+// === VERSIÓN A PRUEBA DE FALLOS ===
+console.log('🚀 Iniciando app.js');
 
-// Verificar que React está disponible
-if (typeof React === 'undefined') {
-  console.error('React no está disponible');
-  document.getElementById('root').innerHTML = '<div style="padding: 2rem; color: red;">Error: React no disponible</div>';
-  throw new Error('React no disponible');
-}
-
-if (typeof ReactDOM === 'undefined') {
-  console.error('ReactDOM no está disponible');
-  document.getElementById('root').innerHTML = '<div style="padding: 2rem; color: red;">Error: ReactDOM no disponible</div>';
-  throw new Error('ReactDOM no disponible');
-}
-
-if (typeof ReactRouterDOM === 'undefined') {
-  console.error('ReactRouterDOM no está disponible');
-  document.getElementById('root').innerHTML = '<div style="padding: 2rem; color: red;">Error: ReactRouterDOM no disponible</div>';
-  throw new Error('ReactRouterDOM no disponible');
-}
-
-console.log('Todas las librerías verificadas correctamente');
-
-// Destructuring
-const { useState } = React;
-const { HashRouter, Routes, Route, NavLink } = ReactRouterDOM;
-
-console.log('Destructuring completado');
-
-// Componente simple de test
-const TestPage = () => {
-  console.log('Renderizando TestPage');
-  return (
-    <div style={{padding: '2rem', textAlign: 'center'}}>
-      <h1>🎉 ¡Funciona!</h1>
-      <p>La aplicación React está funcionando correctamente.</p>
-    </div>
-  );
-};
-
-// Sidebar simple
-const Sidebar = () => {
-  console.log('Renderizando Sidebar');
-  return (
-    <div style={{
-      width: '260px',
-      backgroundColor: '#0c4a6e',
-      padding: '1.5rem',
-      color: 'white',
-      minHeight: '100vh'
-    }}>
-      <div style={{fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center'}}>
-        LBC Test
+// Función para mostrar errores en pantalla
+function mostrarError(mensaje, error) {
+  console.error(mensaje, error);
+  const rootElement = document.getElementById('root');
+  if (rootElement) {
+    rootElement.innerHTML = `
+      <div style="
+        padding: 2rem; 
+        margin: 2rem; 
+        background: #fee; 
+        border: 2px solid #dc2626; 
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+      ">
+        <h2 style="color: #dc2626; margin-top: 0;">❌ Error en la aplicación</h2>
+        <p><strong>Mensaje:</strong> ${mensaje}</p>
+        <p><strong>Error:</strong> ${error ? error.message : 'Error desconocido'}</p>
+        <details style="margin-top: 1rem;">
+          <summary style="cursor: pointer; font-weight: bold;">Ver detalles técnicos</summary>
+          <pre style="
+            background: #f5f5f5; 
+            padding: 1rem; 
+            border-radius: 4px; 
+            overflow: auto; 
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+          ">${error ? error.stack : 'No hay stack trace disponible'}</pre>
+        </details>
       </div>
-      <nav>
-        <NavLink 
-          to="/" 
-          style={{
-            color: '#e0f2fe',
-            textDecoration: 'none',
-            display: 'block',
-            padding: '0.75rem 1rem',
-            borderRadius: '0.5rem'
-          }}
-        >
-          Inicio
-        </NavLink>
-      </nav>
-    </div>
-  );
-};
+    `;
+  }
+}
 
-// App principal
-const App = () => {
-  console.log('Renderizando App');
-  return React.createElement(
-    HashRouter,
-    null,
-    React.createElement(
-      'div',
-      { style: { display: 'flex', minHeight: '100vh' } },
-      React.createElement(Sidebar),
-      React.createElement(
-        'main',
-        { style: { flexGrow: 1, padding: '2rem', display: 'flex', justifyContent: 'center' } },
-        React.createElement(
-          Routes,
-          null,
-          React.createElement(Route, { path: '/', element: React.createElement(TestPage) })
+// Verificar librerías paso a paso
+try {
+  console.log('Verificando React...');
+  if (typeof React === 'undefined') {
+    throw new Error('React no está disponible');
+  }
+  console.log('✅ React disponible');
+
+  console.log('Verificando ReactDOM...');
+  if (typeof ReactDOM === 'undefined') {
+    throw new Error('ReactDOM no está disponible');
+  }
+  console.log('✅ ReactDOM disponible');
+
+  console.log('Verificando ReactRouterDOM...');
+  if (typeof ReactRouterDOM === 'undefined') {
+    throw new Error('ReactRouterDOM no está disponible');
+  }
+  console.log('✅ ReactRouterDOM disponible');
+
+  // Extraer componentes necesarios
+  console.log('Extrayendo hooks y componentes...');
+  const useState = React.useState;
+  const HashRouter = ReactRouterDOM.HashRouter;
+  const Routes = ReactRouterDOM.Routes;
+  const Route = ReactRouterDOM.Route;
+  const NavLink = ReactRouterDOM.NavLink;
+  console.log('✅ Hooks y componentes extraidos');
+
+  // Componente de prueba simple
+  console.log('Definiendo componentes...');
+  
+  function PaginaInicio() {
+    console.log('Renderizando PaginaInicio');
+    return React.createElement('div', 
+      { 
+        style: { 
+          padding: '2rem', 
+          textAlign: 'center',
+          maxWidth: '600px',
+          margin: '0 auto'
+        } 
+      },
+      React.createElement('h1', 
+        { style: { color: '#0c4a6e', marginBottom: '1rem' } }, 
+        '🎉 ¡Aplicación funcionando!'
+      ),
+      React.createElement('h2', 
+        { style: { color: '#374151', marginBottom: '1.5rem' } }, 
+        'LBC Consultores Ambientales'
+      ),
+      React.createElement('p', 
+        { style: { lineHeight: '1.6', color: '#6b7280' } }, 
+        'La aplicación React se ha cargado correctamente. Usa el menú lateral para navegar.'
+      ),
+      React.createElement('div',
+        { style: { marginTop: '2rem', padding: '1rem', background: '#f0f9ff', borderRadius: '8px' } },
+        React.createElement('p', 
+          { style: { margin: '0', fontWeight: 'bold', color: '#0c4a6e' } }, 
+          '✅ Todas las librerías funcionando correctamente'
         )
       )
-    )
-  );
-};
-
-console.log('Componentes definidos, intentando renderizar...');
-
-// Renderizar
-try {
-  const rootElement = document.getElementById('root');
-  if (!rootElement) {
-    throw new Error('Elemento root no encontrado');
+    );
   }
+
+  function BarraLateral() {
+    console.log('Renderizando BarraLateral');
+    return React.createElement('aside', {
+      style: {
+        width: '260px',
+        backgroundColor: '#0c4a6e',
+        padding: '1.5rem',
+        color: 'white',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+      }
+    },
+    React.createElement('div', {
+      style: {
+        fontSize: '1.5rem',
+        fontWeight: '700',
+        marginBottom: '2rem',
+        textAlign: 'center'
+      }
+    }, 'LBC Paneles'),
+    React.createElement('nav', null,
+      React.createElement(NavLink, {
+        to: '/',
+        style: {
+          color: '#e0f2fe',
+          textDecoration: 'none',
+          display: 'block',
+          padding: '0.75rem 1rem',
+          borderRadius: '0.5rem',
+          marginBottom: '0.5rem'
+        }
+      }, 'Inicio')
+    ));
+  }
+
+  function App() {
+    console.log('Renderizando App principal');
+    return React.createElement(HashRouter, null,
+      React.createElement('div', {
+        style: {
+          display: 'flex',
+          minHeight: '100vh'
+        }
+      },
+      React.createElement(BarraLateral),
+      React.createElement('main', {
+        style: {
+          flexGrow: 1,
+          padding: '2rem',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'flex-start'
+        }
+      },
+      React.createElement(Routes, null,
+        React.createElement(Route, {
+          path: '/',
+          element: React.createElement(PaginaInicio)
+        })
+      ))));
+  }
+
+  console.log('✅ Componentes definidos');
+
+  // Renderizar la aplicación
+  console.log('Obteniendo elemento root...');
+  const rootElement = document.getElementById('root');
   
-  console.log('Elemento root encontrado, creando root de React...');
+  if (!rootElement) {
+    throw new Error('Elemento #root no encontrado en el DOM');
+  }
+  console.log('✅ Elemento root encontrado');
+
+  console.log('Creando root de React...');
   const root = ReactDOM.createRoot(rootElement);
-  
-  console.log('Root creado, renderizando app...');
+  console.log('✅ Root de React creado');
+
+  console.log('Renderizando aplicación...');
   root.render(React.createElement(App));
-  
-  console.log('✅ APLICACIÓN RENDERIZADA EXITOSAMENTE');
-  
+  console.log('🎉 APLICACIÓN RENDERIZADA EXITOSAMENTE');
+
 } catch (error) {
-  console.error('❌ ERROR AL RENDERIZAR:', error);
-  console.error('Stack trace:', error.stack);
-  
-  document.getElementById('root').innerHTML = `
-    <div style="padding: 2rem; color: red; background: #fee; border: 1px solid red; margin: 2rem;">
-      <h2>Error al renderizar</h2>
-      <p><strong>Mensaje:</strong> ${error.message}</p>
-      <pre style="background: #f5f5f5; padding: 1rem; overflow: auto;">${error.stack}</pre>
-    </div>
-  `;
+  mostrarError('Error durante la inicialización de la aplicación', error);
 }
