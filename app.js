@@ -876,11 +876,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   try {
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
     );
     console.log('Aplicación renderizada con éxito');
   } catch (error) {
@@ -894,3 +894,27 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 });
+const App = () => (
+  <div className="main-layout">
+    <div className="sidebar">
+      <div className="sidebar-header">Paneles</div>
+      <nav className="sidebar-nav">
+        <NavLink to="/" className="sidebar-link">Inicio</NavLink>
+        <NavLink to="/vegetacion" className="sidebar-link">Vegetación</NavLink>
+      </nav>
+    </div>
+    <div className="content">
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/vegetacion" element={<ChileVegetationSelector />} />
+      </Routes>
+    </div>
+  </div>
+);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
