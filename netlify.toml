@@ -1,3 +1,5 @@
+# This is the rule for your single-page application.
+# It redirects all paths that are not files to index.html.
 [[redirects]]
   from = "/*"
   to = "/index.html"
