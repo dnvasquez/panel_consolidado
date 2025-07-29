@@ -5,17 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Repositorio de Paneles LBC</title>
   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="root">
+    <!-- Fallback loading message -->
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Inter', sans-serif;">
+      <div style="text-align: center;">
+        <h2>Cargando aplicación...</h2>
+        <p>Si este mensaje persiste, revisa la consola del navegador (F12) para ver errores.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- React 18 -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
   <!-- Babel para JSX -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <!-- React Router DOM v6 - versión estable y compatible -->
-  <script src="https://unpkg.com/react-router-dom@6/dist/umd/react-router-dom.production.min.js"></script>
-</head>
-<body>
-  <div id="root"></div>
+  
+  <!-- React Router DOM - usando versión estable -->
+  <script src="https://unpkg.com/react-router-dom@6.8.0/dist/umd/react-router-dom.production.min.js"></script>
 
-  <script type="text/babel" src="app.js"></script>
+  <script type="text/babel">
+    // Verificar que todas las librerías están disponibles
+    console.log('React:', typeof React !== 'undefined' ? '✓' : '✗');
+    console.log('ReactDOM:', typeof ReactDOM !== 'undefined' ? '✓' : '✗');
+    console.log('ReactRouterDOM:', typeof ReactRouterDOM !== 'undefined' ? '✓' : '✗');
+
+    if (typeof React === 'undefined') {
+      document.getElementById('root').innerHTML = '<div style="padding: 2rem; text-align: center; color: red;"><h2>Error: React no se cargó correctamente</h2></div>';
+    } else if (typeof ReactDOM === 'undefined') {
+      document.getElementById('root').innerHTML = '<div style="padding: 2rem; text-align: center; color: red;"><h2>Error: ReactDOM no se cargó correctamente</h2></div>';
+    } else if (typeof ReactRouterDOM === 'undefined') {
+      document.getElementById('root').innerHTML = '<div style="padding: 2rem; text-align: center; color: red;"><h2>Error: React Router DOM no se cargó correctamente</h2></div>';
+    } else {
+      // Si todas las librerías están disponibles, cargar la aplicación
+      console.log('Todas las librerías cargadas correctamente, iniciando aplicación...');
+      
+      // Cargar el script de la aplicación
+      const script = document.createElement('script');
+      script.type = 'text/babel';
+      script.src = 'app.js';
+      script.onload = () => console.log('app.js cargado exitosamente');
+      script.onerror = (error) => {
+        console.error('Error cargando app.js:', error);
+        document.getElementById('root').innerHTML = '<div style="padding: 2rem; text-align: center; color: red;"><h2>Error cargando app.js</h2><p>Verifica que el archivo existe y es accesible.</p></div>';
+      };
+      document.head.appendChild(script);
+    }
+  </script>
 </body>
 </html>
