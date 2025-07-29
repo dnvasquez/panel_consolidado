@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Repositorio de Paneles LBC</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Preload fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -20,12 +17,12 @@
     </div>
   </div>
 
-  <!-- Carga las dependencias en orden y con versiones específicas -->
-  <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/react-router-dom@6.8.1/dist/umd/react-router-dom.production.min.js"></script>
+  <!-- Carga optimizada de dependencias -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-router-dom@6.8.0/dist/umd/react-router-dom.production.min.js"></script>
   
-  <!-- Considera eliminar Babel Standalone y pre-transpilar tu código -->
+  <!-- Cambia a JavaScript normal (no Babel) -->
   <script src="app.js" defer></script>
 </body>
 </html>
