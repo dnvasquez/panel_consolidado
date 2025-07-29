@@ -1,5 +1,6 @@
 /* Estilos Generales */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -63,7 +64,7 @@ body {
   justify-content: center;
 }
 
-/* ESTILOS DE LOS PANELES (unificados de tus archivos) */
+/* ESTILOS DE LOS PANELES */
 .app-container {
   max-width: 56rem;
   width: 100%;
@@ -82,6 +83,7 @@ body {
   text-align: center;
   margin-bottom: 0.5rem;
 }
+
 .subtitle {
   text-align: center;
   font-size: 1.125rem;
@@ -89,10 +91,142 @@ body {
   margin-bottom: 2rem;
   font-weight: 500;
 }
-/* ... (copia aquí el resto de tus estilos: .select-container, .select-box, .description-box, etc.) */
-/* Colores específicos por panel */
-.title.vegetation-title { color: #166534; }
-.title.climate-title { color: #0c4a6e; }
 
-/* Otros estilos que necesites de tus archivos originales */
-.select-container{margin-bottom:1.5rem}.select-label{display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:.5rem}.select-box{width:100%;padding:.75rem;border:1px solid #d1d5db;border-radius:.5rem;background-color:white;font-size:1rem;color:#111827;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");background-repeat:no-repeat;background-position:right .75rem center;background-size:1em}.select-box:focus{outline:none;border-color:#10b981;box-shadow:0 0 0 2px rgba(16,185,129,.2)}.description-box{margin-top:2rem;padding:1.5rem;border-radius:.5rem;border-left-width:4px}.description-box.vegetation{background:linear-gradient(to right,#f0fdf4,#f0f9ff);border-left-color:#10b981}.description-box.climate{background:linear-gradient(to right,#f0f9ff,#eef2ff);border-left-color:#3b82f6}.description-title{font-size:1.25rem;font-weight:600;color:#1f2937;margin-bottom:1rem}.description-text{color:#374151;line-height:1.625}.species-box{margin-top:1.5rem;padding:1.5rem;background:linear-gradient(to right,#f0f9ff,#eef2ff);border-radius:.5rem;border-left:4px solid #3b82f6}.species-title{font-size:1.25rem;font-weight:600;color:#1f2937;margin-bottom:1rem}.species-text{color:#374151;line-height:1.625;font-style:italic}.footer{border-top:1px solid #e5e7eb;margin-top:2.5rem;padding-top:1.5rem;text-align:center;color:#6b7280;font-size:.875rem}.footer p{margin:.25rem 0}
+/* Colores específicos por panel */
+.title.vegetation-title { 
+  color: #166534; 
+}
+
+.title.climate-title { 
+  color: #0c4a6e; 
+}
+
+/* Selectores */
+.select-container {
+  margin-bottom: 1.5rem;
+}
+
+.select-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.select-box {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: white;
+  font-size: 1rem;
+  color: #111827;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1em;
+}
+
+.select-box:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* Cajas de descripción */
+.description-box {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border-left-width: 4px;
+  background: linear-gradient(to right, #f0fdf4, #f0f9ff);
+  border-left-color: #10b981;
+}
+
+.description-box.vegetation {
+  background: linear-gradient(to right, #f0fdf4, #f0f9ff);
+  border-left-color: #10b981;
+}
+
+.description-box.climate {
+  background: linear-gradient(to right, #f0f9ff, #eef2ff);
+  border-left-color: #3b82f6;
+}
+
+.description-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.description-text {
+  color: #374151;
+  line-height: 1.625;
+}
+
+/* Caja de especies */
+.species-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(to right, #f0f9ff, #eef2ff);
+  border-radius: 0.5rem;
+  border-left: 4px solid #3b82f6;
+}
+
+.species-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.species-text {
+  color: #374151;
+  line-height: 1.625;
+  font-style: italic;
+}
+
+/* Utilidades de espaciado */
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.footer p {
+  margin: 0.25rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+}
