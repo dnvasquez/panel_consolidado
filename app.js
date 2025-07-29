@@ -875,7 +875,7 @@ const Sidebar = () => (
   <aside className="sidebar">
     <div className="sidebar-header">LBC Paneles</div>
     <nav className="sidebar-nav">
-      <NavLink to="/" className="sidebar-link">Inicio</NavLink>
+       <NavLink to="/" end className="sidebar-link">Inicio</NavLink>
       <NavLink to="/vegetacion" className="sidebar-link">Form. Vegetacionales</NavLink>
       <NavLink to="/clima" className="sidebar-link">Regiones Climáticas</NavLink>
       {/* ¡Aquí agregarás nuevos enlaces en el futuro! */}
